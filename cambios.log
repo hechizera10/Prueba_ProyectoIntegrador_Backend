@@ -101,3 +101,15 @@ INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EM
 [2024-05-23 21:31:26] [ INFO ] [OdontologoDAOH2:51] ID: 4 Nombre: Juan Apellido: Perez Matricula: 12345678
 [2024-05-23 21:31:26] [ INFO ] [Cliente:25] Iniciando Buscar Paciente por email
 [2024-05-23 21:31:26] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 21:32:13] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 21:32:13] [ ERROR] [PacienteDAOH2:141] Table "PACIENTES" not found (this database is empty); SQL statement:
+SELECT * FROM PACIENTES WHERE EMAIL=? [42104-214]
+[2024-05-23 21:40:49] [ WARN ] [BD:46] La cantidad de columnas no coincide
+Column count does not match; SQL statement:
+INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EMAIL) VALUES ('Jorgito','Pereyra','111111','2024-05-16', 1,'jorge.pereyra@digitalhouse.com',1), ('German','Fraire','22222','2024-05-10',2,'german@german.com',2); INSERT INTO DOMICILIOS  (CALLE, NUMERO, LOCALIDAD, PROVINCIA) VALUES ('Siempre Viva',742,'Springfield','USA'),('Av. Uruguay',345,'Punta del Este','Uruguay') [21002-214]
+[2024-05-23 21:41:56] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 21:44:13] [ WARN ] [BD:54] La cantidad de columnas no coincide
+Column count does not match; SQL statement:
+INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EMAIL) VALUES ('Jorgito','Pereyra','111111','2024-05-16', 1,'jorge.pereyra@digitalhouse.com',1), ('German','Fraire','22222','2024-05-10',2,'german@german.com',2); INSERT INTO DOMICILIOS  (CALLE, NUMERO, LOCALIDAD, PROVINCIA) VALUES ('Siempre Viva',742,'Springfield','USA'),('Av. Uruguay',345,'Punta del Este','Uruguay') [21002-214]
+[2024-05-23 21:44:26] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 21:45:22] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
