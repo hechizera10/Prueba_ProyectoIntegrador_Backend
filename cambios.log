@@ -113,3 +113,22 @@ Column count does not match; SQL statement:
 INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EMAIL) VALUES ('Jorgito','Pereyra','111111','2024-05-16', 1,'jorge.pereyra@digitalhouse.com',1), ('German','Fraire','22222','2024-05-10',2,'german@german.com',2); INSERT INTO DOMICILIOS  (CALLE, NUMERO, LOCALIDAD, PROVINCIA) VALUES ('Siempre Viva',742,'Springfield','USA'),('Av. Uruguay',345,'Punta del Este','Uruguay') [21002-214]
 [2024-05-23 21:44:26] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
 [2024-05-23 21:45:22] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 21:46:40] [ INFO ] [BD:53] tabla creada con exito
+[2024-05-23 21:46:51] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 21:46:51] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 2
+[2024-05-23 21:55:19] [ INFO ] [BD:53] tabla creada con exito
+[2024-05-23 21:56:54] [ INFO ] [BD:56] tabla creada con exito
+[2024-05-23 21:58:00] [ INFO ] [BD:60] tabla creada con exito
+[2024-05-23 21:59:15] [ INFO ] [BD:60] tabla creada con exito
+[2024-05-23 21:59:47] [ INFO ] [BD:60] tabla creada con exito
+[2024-05-23 22:07:06] [ INFO ] [BD:60] tabla creada con exito
+[2024-05-23 22:07:13] [ INFO ] [OdontologoDAOH2:72] iniciando la busqueda por id: 1
+[2024-05-23 22:12:09] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 22:12:09] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 2
+[2024-05-23 22:12:09] [ INFO ] [OdontologoDAOH2:72] iniciando la busqueda por id: 2
+[2024-05-23 22:15:13] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 22:15:13] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 2
+[2024-05-23 22:15:13] [ INFO ] [OdontologoDAOH2:72] iniciando la busqueda por id: 2
+[2024-05-23 22:15:16] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 22:15:16] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 2
+[2024-05-23 22:15:16] [ INFO ] [OdontologoDAOH2:72] iniciando la busqueda por id: 2

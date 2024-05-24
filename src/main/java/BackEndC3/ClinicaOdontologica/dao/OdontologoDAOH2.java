@@ -1,7 +1,9 @@
 package BackEndC3.ClinicaOdontologica.dao;
 
+import BackEndC3.ClinicaOdontologica.model.Domicilio;
 import BackEndC3.ClinicaOdontologica.model.Odontologo;
 
+import BackEndC3.ClinicaOdontologica.model.Paciente;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -15,6 +17,7 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
     private static final Logger logger= Logger.getLogger(OdontologoDAOH2.class);
     private static final String SQL_SELECT_ALL="SELECT * FROM ODONTOLOGOS";
     private static final String SQL_SAVE="INSERT INTO ODONTOLOGOS (ID,NOMBRE,APELLIDO,MATRICULA) VALUES (?,?,?,?)";
+    private static final String SQL_SELECT_BY_ID="SELECT * FROM ODONTOLOGOS WHERE ID=?";
     @Override
     public Odontologo guardar(Odontologo odontologo) {
         logger.info("Iniciando la operacion de guardado de un odontologo");
@@ -66,7 +69,24 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
 
     @Override
     public Odontologo buscarPorId(Integer id) {
-        return null;
+        logger.info("iniciando la busqueda por id: "+id);
+        Connection connection=null;
+        Odontologo odontologo= null;
+        try{
+            connection=BD.getConnection();
+            PreparedStatement psSelectID= connection.prepareStatement(SQL_SELECT_BY_ID);
+            psSelectID.setInt(1,id);
+            ResultSet rs= psSelectID.executeQuery();
+            while(rs.next()){
+                odontologo= new Odontologo(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4));
+            }
+
+
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
+
+        return odontologo;
     }
 
     @Override
