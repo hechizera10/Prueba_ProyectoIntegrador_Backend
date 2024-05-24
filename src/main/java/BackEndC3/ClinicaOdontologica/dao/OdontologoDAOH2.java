@@ -16,20 +16,20 @@ import java.util.List;
 public class OdontologoDAOH2 implements iDao<Odontologo>{
     private static final Logger logger= Logger.getLogger(OdontologoDAOH2.class);
     private static final String SQL_SELECT_ALL="SELECT * FROM ODONTOLOGOS";
-    private static final String SQL_SAVE="INSERT INTO ODONTOLOGOS (ID,NOMBRE,APELLIDO,MATRICULA) VALUES (?,?,?,?)";
+    private static final String SQL_SAVE="INSERT INTO ODONTOLOGOS (NOMBRE,APELLIDO,MATRICULA) VALUES (?,?,?)";
     private static final String SQL_SELECT_BY_ID="SELECT * FROM ODONTOLOGOS WHERE ID=?";
+
+
     @Override
     public Odontologo guardar(Odontologo odontologo) {
         logger.info("Iniciando la operacion de guardado de un odontologo");
         Connection connection= null;
         try{
             connection= BD.getConnection();
-            Statement statement= connection.createStatement();
             PreparedStatement psSave= connection.prepareStatement(SQL_SAVE);
-            psSave.setInt(1,odontologo.getId());
-            psSave.setString(2,odontologo.getNombre());
-            psSave.setString(3,odontologo.getApellido());
-            psSave.setInt(4,odontologo.getMatricula());
+            psSave.setString(1,odontologo.getNombre());
+            psSave.setString(2,odontologo.getApellido());
+            psSave.setInt(3,odontologo.getMatricula());
             psSave.execute();
             logger.info("Odontologo guardado con éxito");
 

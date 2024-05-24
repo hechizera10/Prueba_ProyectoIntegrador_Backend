@@ -33,6 +33,7 @@ public class BD {
                     "NOMBRE VARCHAR(100) NOT NULL, " +
                     "APELLIDO VARCHAR(100) NOT NULL, " +
                     "MATRICULA INTEGER NOT NULL)";
+
     //datos de prueba
     private static final String SQL_PRUEBA_ODON =
             "INSERT INTO ODONTOLOGOS (NOMBRE, APELLIDO, MATRICULA) " +

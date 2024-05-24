@@ -132,3 +132,10 @@ INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EM
 [2024-05-23 22:15:16] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
 [2024-05-23 22:15:16] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 2
 [2024-05-23 22:15:16] [ INFO ] [OdontologoDAOH2:72] iniciando la busqueda por id: 2
+[2024-05-23 22:15:26] [ INFO ] [BD:60] tabla creada con exito
+[2024-05-23 22:15:29] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 22:15:29] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 2
+[2024-05-23 22:15:29] [ INFO ] [OdontologoDAOH2:72] iniciando la busqueda por id: 2
+[2024-05-23 22:17:02] [ INFO ] [PacienteDAOH2:120] iniciando la busqueda por email: german@german.com
+[2024-05-23 22:17:02] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 2
+[2024-05-23 22:17:02] [ INFO ] [OdontologoDAOH2:72] iniciando la busqueda por id: 2
