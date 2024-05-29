@@ -9,9 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller //<-- es controller pq vamos a usar una tecnologia de vista
-@RequestMapping("/odontologo")
+//@Controller //<-- es controller pq vamos a usar una tecnologia de vista
+@RestController
+@RequestMapping("/odontologos")
 public class OdontologoController {
     private OdontologoService odontologoService;
 

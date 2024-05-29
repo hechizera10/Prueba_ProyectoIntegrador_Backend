@@ -33,6 +33,13 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
             psSave.execute();
             logger.info("Odontologo guardado con éxito");
 
+            // --> Hasta aca ibamos y el profe agrego la siguiente linea
+
+            ResultSet clave = psSave.getGeneratedKeys();
+            while (clave.next()){
+                odontologo.setId(clave.getInt(1));
+            }
+
 
         }catch (Exception e){
             logger.error(e.getMessage());
@@ -52,6 +59,7 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
             ResultSet resultSet= statement.executeQuery(SQL_SELECT_ALL);
             while (resultSet.next()){
                 logger.info("ID: "+resultSet.getInt("ID")+" Nombre: "+resultSet.getString("NOMBRE")+" Apellido: "+resultSet.getString("APELLIDO")+" Matricula: "+resultSet.getInt("MATRICULA"));
+
                 odontologos.add(new Odontologo(resultSet.getInt("ID"),resultSet.getString("NOMBRE"),resultSet.getString("APELLIDO"),resultSet.getInt("MATRICULA")));
             }
         }catch (Exception e){

@@ -21,12 +21,15 @@ public class OdontologoService {
     public Odontologo guardarOdontologo(Odontologo odontologo){
         return odontologoiDao.guardar(odontologo);
     }
+
     public List<Odontologo> buscarTodos(){
         return odontologoiDao.buscarTodos();
     }
+
     public Odontologo buscarOdontologoPorId(Integer id){
         return odontologoiDao.buscarPorId(id);
     }
+
     //public Odontologo guardarOdontologoEnLista(Odontologo odontologo){
        // return odontologoiDaoList.guardar(odontologo);
     //}

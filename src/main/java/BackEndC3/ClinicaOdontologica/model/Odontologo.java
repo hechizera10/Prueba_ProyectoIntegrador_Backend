@@ -1,5 +1,10 @@
 package BackEndC3.ClinicaOdontologica.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Odontologo {
     private Integer id;
     private String nombre;
@@ -19,20 +24,8 @@ public class Odontologo {
         this.matricula = matricula;
     }
 
-    public Integer getId() {
-        return id;
+    public Odontologo() {
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public Integer getMatricula() {
-        return matricula;
-    }
 
 }

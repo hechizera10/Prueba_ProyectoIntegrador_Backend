@@ -41,8 +41,8 @@ public class Paciente {
 
     }
 
-
-
+    public Paciente() {
+    }
 
     @Override
     public String toString() {
