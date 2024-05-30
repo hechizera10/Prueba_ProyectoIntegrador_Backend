@@ -16,7 +16,7 @@ public class DomicilioDAOH2 implements iDao<Domicilio>{
 
     @Override
     public Domicilio guardar(Domicilio domicilio) {
-        logger.info("iniciando las operaciones de guardado");
+        logger.info("Iniciando las operaciones de guardado de un domicilio");
         Connection connection=null;
         try{
             connection=BD.getConnection();

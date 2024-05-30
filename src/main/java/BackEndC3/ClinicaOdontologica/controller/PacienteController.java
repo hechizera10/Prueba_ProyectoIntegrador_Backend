@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController //<-- es controller pq vamos a usar una tecnologia de vista
+//@Controller //<-- es controller pq vamos a usar una tecnologia de vista
+@RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
     private PacienteService pacienteService;
-    private OdontologoService odontologoService;
 
     public PacienteController() {
         pacienteService= new PacienteService();
     }
 
-    @GetMapping("/{id}") //--> nos permite buscar un paciente por id (localhost:8080/pacientes?id=1
+    @GetMapping("/{id}") //--> nos permite buscar un paciente por id
     public Paciente buscarPacientePorId(@PathVariable("id") Integer id){
         return pacienteService.buscarPorID(id);
     }

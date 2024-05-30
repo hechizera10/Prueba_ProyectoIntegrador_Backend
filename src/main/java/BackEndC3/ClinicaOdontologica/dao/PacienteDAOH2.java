@@ -18,12 +18,12 @@ public class PacienteDAOH2 implements iDao<Paciente> {
     private static final String SQL_SELECT_ALL="SELECT * FROM PACIENTES";
     private static final String SQL_SELECT_BY_EMAIL="SELECT * FROM PACIENTES WHERE EMAIL=?";
     private static final String SQL_UPDATE="UPDATE PACIENTES SET NOMBRE=?, APELLIDO=?, CEDULA=?, FECHA_INGRESO=?, " +
-            "DOMICILIO_ID=?, EMAIL=?, ODONTOLOO_ID=? WHERE ID=?";
+            "DOMICILIO_ID=?, EMAIL=?, ODONTOLOGO_ID=? WHERE ID=?";
 
 
     @Override
     public Paciente guardar(Paciente paciente) {
-        logger.info("inciando las operaciones de guardado");
+        logger.info("Inciando las operaciones de guardado de un paciente");
         Connection connection= null;
         DomicilioDAOH2 daoAux= new DomicilioDAOH2();
         Domicilio domicilio=  daoAux.guardar(paciente.getDomicilio());
@@ -101,13 +101,14 @@ public class PacienteDAOH2 implements iDao<Paciente> {
 
     @Override
     public void actualizar(Paciente paciente) {
-        logger.warn("iniciando las operaciones de actualizacion de un paciente con id : "+paciente.getId());
+        logger.warn("Iniciando las operaciones de actualizacion de un paciente con id : "+paciente.getId());
         Connection connection= null;
         DomicilioDAOH2 daoAux= new DomicilioDAOH2();
         try{
             connection= BD.getConnection();
             daoAux.actualizar(paciente.getDomicilio());
             PreparedStatement psUpdate= connection.prepareStatement(SQL_UPDATE);
+
             psUpdate.setString(1, paciente.getNombre());
             psUpdate.setString(2, paciente.getApellido());
             psUpdate.setString(3, paciente.getCedula());
@@ -125,7 +126,7 @@ public class PacienteDAOH2 implements iDao<Paciente> {
 
     @Override
     public List<Paciente> buscarTodos() {
-        logger.info("iniciando las operaciones de busqueda:");
+        logger.info("iniciando las operaciones de busqueda de un paciente:");
         Connection connection=null;
         List<Paciente> pacientes= new ArrayList<>();
         Paciente paciente= null;
@@ -138,6 +139,8 @@ public class PacienteDAOH2 implements iDao<Paciente> {
             Statement statement= connection.createStatement();
             ResultSet rs= statement.executeQuery(SQL_SELECT_ALL);
             while(rs.next()){
+                logger.info("Buscando pacientes");
+
                 domicilio= daoAux.buscarPorId(rs.getInt(6));
                 odontologo= daoOdontologo.buscarPorId(rs.getInt(8));
                 paciente= new Paciente(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDate(5).toLocalDate(),domicilio,rs.getString(7), odontologo);

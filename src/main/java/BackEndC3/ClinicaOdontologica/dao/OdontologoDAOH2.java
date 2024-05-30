@@ -6,10 +6,7 @@ import BackEndC3.ClinicaOdontologica.model.Odontologo;
 import BackEndC3.ClinicaOdontologica.model.Paciente;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +15,8 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
     private static final String SQL_SELECT_ALL="SELECT * FROM ODONTOLOGOS";
     private static final String SQL_SAVE="INSERT INTO ODONTOLOGOS (NOMBRE,APELLIDO,MATRICULA) VALUES (?,?,?)";
     private static final String SQL_SELECT_BY_ID="SELECT * FROM ODONTOLOGOS WHERE ID=?";
+    private static final String SQL_DELETE="DELETE FROM ODONTOLOGOS WHERE ID=?";
+    private static final String SQL_UPDATE="UPDATE ODONTOLOGOS SET NOMBRE=?, APELLIDO=?, MATRICULA=? WHERE ID=?";
 
 
     @Override
@@ -26,7 +25,7 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
         Connection connection= null;
         try{
             connection= BD.getConnection();
-            PreparedStatement psSave= connection.prepareStatement(SQL_SAVE);
+            PreparedStatement psSave= connection.prepareStatement(SQL_SAVE,Statement.RETURN_GENERATED_KEYS);
             psSave.setString(1,odontologo.getNombre());
             psSave.setString(2,odontologo.getApellido());
             psSave.setInt(3,odontologo.getMatricula());
@@ -53,14 +52,17 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
         logger.info("Buscando todos los odontologos");
         Connection connection= null;
         List<Odontologo> odontologos = new ArrayList<>();
+        Odontologo odontologo= null;
         try{
             connection= BD.getConnection();
             Statement statement= connection.createStatement();
             ResultSet resultSet= statement.executeQuery(SQL_SELECT_ALL);
             while (resultSet.next()){
-                logger.info("ID: "+resultSet.getInt("ID")+" Nombre: "+resultSet.getString("NOMBRE")+" Apellido: "+resultSet.getString("APELLIDO")+" Matricula: "+resultSet.getInt("MATRICULA"));
+                logger.info("Buscando odontologos");
 
-                odontologos.add(new Odontologo(resultSet.getInt("ID"),resultSet.getString("NOMBRE"),resultSet.getString("APELLIDO"),resultSet.getInt("MATRICULA")));
+                odontologo=new Odontologo(resultSet.getInt("ID"),resultSet.getString("NOMBRE"),resultSet.getString(
+                        "APELLIDO"),resultSet.getInt("MATRICULA"));
+                odontologos.add(odontologo);
             }
         }catch (Exception e){
             logger.error(e.getMessage());
@@ -99,12 +101,37 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
 
     @Override
     public void eliminar(Integer id) {
+        logger.info("Iniciando las operaciones de eliminacion de un odontologo con id : "+id);
+        Connection connection= null;
+        try{
+            connection= BD.getConnection();
+            PreparedStatement psDelete= connection.prepareStatement(SQL_DELETE);
+            psDelete.setInt(1,id);
+            psDelete.execute();
+            logger.info("Odontologo eliminado con exito");
 
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
     }
 
     @Override
     public void actualizar(Odontologo odontologo) {
+        logger.warn("Iniciando las operaciones de actualizacion de un paciente con id : "+odontologo.getId());
+        Connection connection= null;
+        try{
+            connection= BD.getConnection();
+            PreparedStatement psUpdate= connection.prepareStatement(SQL_UPDATE);
 
+            psUpdate.setString(1, odontologo.getNombre());
+            psUpdate.setString(2, odontologo.getApellido());
+            psUpdate.setInt(3, odontologo.getMatricula());
+            psUpdate.setInt(4, odontologo.getId());
+            psUpdate.execute();
+
+        }catch (Exception e){
+            logger.error(e.getMessage());
+        }
     }
 
 }
