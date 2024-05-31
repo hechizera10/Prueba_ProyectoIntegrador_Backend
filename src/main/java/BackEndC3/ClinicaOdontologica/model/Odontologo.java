@@ -7,21 +7,21 @@ import lombok.Setter;
 @Setter
 public class Odontologo {
     private Integer id;
+    private Integer matricula;
     private String nombre;
     private String apellido;
-    private Integer matricula;
 
-    public Odontologo(Integer id, String nombre, String apellido, Integer matricula) {
+    public Odontologo(Integer id, Integer matricula, String nombre, String apellido) {
         this.id = id;
+        this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.matricula = matricula;
 
     }
-    public Odontologo(String nombre, String apellido, Integer matricula) {
+    public Odontologo(Integer matricula, String nombre, String apellido) {
+        this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.matricula = matricula;
     }
 
     public Odontologo() {

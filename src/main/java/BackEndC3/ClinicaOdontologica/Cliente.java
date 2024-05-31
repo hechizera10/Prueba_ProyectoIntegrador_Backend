@@ -14,7 +14,7 @@ public class Cliente {
         BD.crearTablas();
 
         logger.info("Guardando un odontologo en H2");
-        Odontologo odontologo1 = new Odontologo( 4,"Juan", "Perez", 12345678);
+        Odontologo odontologo1 = new Odontologo( 4,12345678,"Juan", "Perez");
         OdontologoService odontologoService = new OdontologoService();
         odontologoService.guardarOdontologo(odontologo1);
 

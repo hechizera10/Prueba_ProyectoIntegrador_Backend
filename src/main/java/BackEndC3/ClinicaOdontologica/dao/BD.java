@@ -30,15 +30,15 @@ public class BD {
             "DROP TABLE IF EXISTS ODONTOLOGOS; " +
                     "CREATE TABLE ODONTOLOGOS (" +
                     "ID INT AUTO_INCREMENT PRIMARY KEY, " +
+                    "MATRICULA INTEGER NOT NULL, " +
                     "NOMBRE VARCHAR(100) NOT NULL, " +
-                    "APELLIDO VARCHAR(100) NOT NULL, " +
-                    "MATRICULA INTEGER NOT NULL)";
+                    "APELLIDO VARCHAR(100) NOT NULL);";
 
     //datos de prueba
     private static final String SQL_PRUEBA_ODON =
-            "INSERT INTO ODONTOLOGOS (NOMBRE, APELLIDO, MATRICULA) " +
-                    "VALUES ('Dr. Juan', 'Bonin', 1234), " +
-                    "('Dra. Joselin', 'Rosas', 5678);";
+            "INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) " +
+                    "VALUES (1234, 'Dr. Juan', 'Bonin'), " +
+                    "(5678, 'Dra. Joselin', 'Rosas');";
     private static final String SQL_PRUEBA =
             "INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EMAIL, ODONTOLOGO_ID) " +
                     "VALUES ('Jorgito', 'Pereyra', '111111', '2024-05-16', 1, 'jorge.pereyra@digitalhouse.com', 1), " +

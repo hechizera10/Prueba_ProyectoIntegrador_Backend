@@ -5,6 +5,8 @@ import BackEndC3.ClinicaOdontologica.model.Odontologo;
 import BackEndC3.ClinicaOdontologica.model.Paciente;
 import BackEndC3.ClinicaOdontologica.service.OdontologoService;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,8 +56,8 @@ public class OdontologoController {
     }
 
     @GetMapping
-    public List<Odontologo> buscarTodosLosOdontologos(){
-        return odontologoService.buscarTodos();
+    public ResponseEntity<List<Odontologo>> buscarTodosLosOdontologos(){
+        return ResponseEntity.ok(odontologoService.buscarTodos());
     }
 
 
