@@ -60,8 +60,8 @@ public class DomicilioDAOH2 implements iDao<Domicilio>{
     }
 
     @Override
-    public void eliminar(Integer id) {
-
+    public Boolean eliminar(Integer id) {
+        return null;
     }
 
     @Override

@@ -84,7 +84,7 @@ public class PacienteDAOH2 implements iDao<Paciente> {
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public Boolean eliminar(Integer id) {
         logger.info("Iniciando las operaciones de eliminacion de un paciente con id : "+id);
         Connection connection= null;
         try{
@@ -93,9 +93,10 @@ public class PacienteDAOH2 implements iDao<Paciente> {
             psDelete.setInt(1,id);
             psDelete.execute();
             logger.info("Paciente eliminado con exito");
-
+            return true;
         }catch (Exception e){
             logger.error(e.getMessage());
+            return false;
         }
     }
 

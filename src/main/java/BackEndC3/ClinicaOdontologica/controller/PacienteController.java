@@ -42,13 +42,14 @@ public class PacienteController {
 
     }
 
-    @DeleteMapping("/eliminar/{id}")
-    public void eliminarPaciente(@PathVariable("id") Integer id){
+    @DeleteMapping("/{id}")
+    public Boolean eliminarPaciente(@PathVariable("id") Integer id){
         Paciente pacienteBuscado = pacienteService.buscarPorID(id);
         if(pacienteBuscado!=null){
             pacienteService.eliminarPaciente(id);
+            return true;
         }
-
+        return false;
     }
 
     @GetMapping

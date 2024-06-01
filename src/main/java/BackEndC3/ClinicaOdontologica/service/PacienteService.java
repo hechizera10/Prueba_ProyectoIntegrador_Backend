@@ -28,8 +28,8 @@ private iDao<Paciente> pacienteiDao;
         pacienteiDao.actualizar(paciente);
     }
 
-    public void eliminarPaciente(Integer id){
-        pacienteiDao.eliminar(id);
+    public Boolean eliminarPaciente(Integer id){
+        return pacienteiDao.eliminar(id);
     }
 
 }

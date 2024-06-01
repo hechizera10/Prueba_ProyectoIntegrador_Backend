@@ -100,7 +100,7 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public Boolean eliminar(Integer id) {
         logger.info("Iniciando las operaciones de eliminacion de un odontologo con id : "+id);
         Connection connection= null;
         try{
@@ -109,9 +109,10 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
             psDelete.setInt(1,id);
             psDelete.execute();
             logger.info("Odontologo eliminado con exito");
-
+            return true;
         }catch (Exception e){
             logger.error(e.getMessage());
+            return false;
         }
     }
 

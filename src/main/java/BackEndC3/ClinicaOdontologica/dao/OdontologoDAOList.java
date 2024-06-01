@@ -37,8 +37,8 @@ public class OdontologoDAOList implements iDao<Odontologo>{
     }
 
     @Override
-    public void eliminar(Integer id) {
-
+    public Boolean eliminar(Integer id) {
+        return null;
     }
 
     @Override
