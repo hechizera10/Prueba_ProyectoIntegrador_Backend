@@ -220,7 +220,7 @@ INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EM
 [2024-05-28 20:50:08] [ INFO ] [DomicilioDAOH2:33] domicilio guardado
 [2024-05-28 20:50:08] [ INFO ] [OdontologoDAOH2:25] Iniciando la operacion de guardado de un odontologo
 [2024-05-28 20:50:08] [ INFO ] [OdontologoDAOH2:34] Odontologo guardado con éxito
-[2024-05-28 20:50:08] [ ERROR] [PacienteDAOH2:51] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.model.Odontologo.getId()" is null
+[2024-05-28 20:50:08] [ ERROR] [PacienteDAOH2:51] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.entity.Odontologo.getId()" is null
 [2024-05-28 20:50:25] [ INFO ] [PacienteDAOH2:128] iniciando las operaciones de busqueda:
 [2024-05-28 20:50:25] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 1
 [2024-05-28 20:50:25] [ INFO ] [OdontologoDAOH2:80] iniciando la busqueda por id: 1
@@ -250,7 +250,7 @@ INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EM
 [2024-05-28 20:58:39] [ INFO ] [DomicilioDAOH2:33] domicilio guardado
 [2024-05-28 20:58:39] [ INFO ] [OdontologoDAOH2:25] Iniciando la operacion de guardado de un odontologo
 [2024-05-28 20:58:39] [ INFO ] [OdontologoDAOH2:34] Odontologo guardado con éxito
-[2024-05-28 20:58:39] [ ERROR] [PacienteDAOH2:51] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.model.Odontologo.getId()" is null
+[2024-05-28 20:58:39] [ ERROR] [PacienteDAOH2:51] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.entity.Odontologo.getId()" is null
 [2024-05-28 20:59:43] [ INFO ] [PacienteDAOH2:128] iniciando las operaciones de busqueda:
 [2024-05-28 20:59:43] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 1
 [2024-05-28 20:59:43] [ INFO ] [OdontologoDAOH2:80] iniciando la busqueda por id: 1
@@ -275,7 +275,7 @@ INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EM
 [2024-05-29 19:24:20] [ INFO ] [DomicilioDAOH2:33] domicilio guardado
 [2024-05-29 19:24:20] [ INFO ] [OdontologoDAOH2:25] Iniciando la operacion de guardado de un odontologo
 [2024-05-29 19:24:20] [ INFO ] [OdontologoDAOH2:34] Odontologo guardado con éxito
-[2024-05-29 19:24:20] [ ERROR] [PacienteDAOH2:51] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.model.Odontologo.getId()" is null
+[2024-05-29 19:24:20] [ ERROR] [PacienteDAOH2:51] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.entity.Odontologo.getId()" is null
 [2024-05-29 19:32:33] [ INFO ] [BD:61] tabla creada con exito
 [2024-05-29 19:33:18] [ INFO ] [PacienteDAOH2:26] inciando las operaciones de guardado
 [2024-05-29 19:33:18] [ INFO ] [DomicilioDAOH2:19] iniciando las operaciones de guardado
@@ -524,7 +524,7 @@ UPDATE PACIENTES SET NOMBRE=?, APELLIDO=?, CEDULA=?, FECHA_INGRESO=?, DOMICILIO_
 [2024-05-30 20:04:37] [ WARN ] [PacienteDAOH2:104] Iniciando las operaciones de actualizacion de un paciente con id : 1
 [2024-05-30 20:04:37] [ ERROR] [PacienteDAOH2:123] Cannot invoke "java.time.LocalDate.getYear()" because "date" is null
 [2024-05-30 20:04:37] [ WARN ] [OdontologoDAOH2:120] Iniciando las operaciones de actualizacion de un paciente con id : 1
-[2024-05-30 20:04:37] [ ERROR] [OdontologoDAOH2:133] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.model.Odontologo.getMatricula()" is null
+[2024-05-30 20:04:37] [ ERROR] [OdontologoDAOH2:133] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.entity.Odontologo.getMatricula()" is null
 [2024-05-30 20:04:40] [ INFO ] [TurnoDAOLISTA:61] iniciando la operacion de mostrar todos los turnos
 [2024-05-30 20:07:02] [ INFO ] [PacienteDAOH2:58] iniciando la operacion de buscado de un paciente con id : 2
 [2024-05-30 20:07:02] [ INFO ] [DomicilioDAOH2:44] iniciando la busqueda de un domicilio con id: 2
@@ -533,7 +533,7 @@ UPDATE PACIENTES SET NOMBRE=?, APELLIDO=?, CEDULA=?, FECHA_INGRESO=?, DOMICILIO_
 [2024-05-30 20:07:02] [ WARN ] [PacienteDAOH2:104] Iniciando las operaciones de actualizacion de un paciente con id : 2
 [2024-05-30 20:07:02] [ ERROR] [PacienteDAOH2:123] Cannot invoke "java.time.LocalDate.getYear()" because "date" is null
 [2024-05-30 20:07:02] [ WARN ] [OdontologoDAOH2:120] Iniciando las operaciones de actualizacion de un paciente con id : 1
-[2024-05-30 20:07:02] [ ERROR] [OdontologoDAOH2:133] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.model.Odontologo.getMatricula()" is null
+[2024-05-30 20:07:02] [ ERROR] [OdontologoDAOH2:133] Cannot invoke "java.lang.Integer.intValue()" because the return value of "BackEndC3.ClinicaOdontologica.entity.Odontologo.getMatricula()" is null
 [2024-05-30 20:07:05] [ INFO ] [TurnoDAOLISTA:61] iniciando la operacion de mostrar todos los turnos
 [2024-05-30 20:08:58] [ INFO ] [BD:61] tabla creada con exito
 [2024-05-30 20:09:45] [ INFO ] [PacienteDAOH2:58] iniciando la operacion de buscado de un paciente con id : 1

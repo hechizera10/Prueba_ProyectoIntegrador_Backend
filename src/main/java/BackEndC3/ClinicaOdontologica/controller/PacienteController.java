@@ -1,60 +1,67 @@
 package BackEndC3.ClinicaOdontologica.controller;
 
-import BackEndC3.ClinicaOdontologica.model.Odontologo;
-import BackEndC3.ClinicaOdontologica.model.Paciente;
-import BackEndC3.ClinicaOdontologica.service.OdontologoService;
+import BackEndC3.ClinicaOdontologica.entity.Paciente;
 import BackEndC3.ClinicaOdontologica.service.PacienteService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 //@Controller //<-- es controller pq vamos a usar una tecnologia de vista
 @RestController
 @RequestMapping("/pacientes")
 public class PacienteController {
+    @Autowired
     private PacienteService pacienteService;
 
-    public PacienteController() {
-        pacienteService= new PacienteService();
+    @GetMapping("/{id}") //--> nos permite buscar un paciente por id
+    public ResponseEntity<Optional<Paciente>> buscarPacientePorId(@PathVariable Long id){
+        return ResponseEntity.ok(pacienteService.buscarPorID(id));
     }
 
-    @GetMapping("/{id}") //--> nos permite buscar un paciente por id
-    public Paciente buscarPacientePorId(@PathVariable("id") Integer id){
-        return pacienteService.buscarPorID(id);
+    @GetMapping
+    public ResponseEntity<List<Paciente>> buscarTodosLosPacientes(){
+        return ResponseEntity.ok(pacienteService.buscarTodosLosPacientes());
     }
 
     @PostMapping //--> nos permite persistir los datos que vienen desde la vista
-    public Paciente guardarPaciente(@RequestBody Paciente paciente){
-        return pacienteService.guardarPaciente(paciente);
+    public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente){
+        return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
     @PutMapping
-    public String actualizarPaciente(@RequestBody Paciente paciente){
+    public ResponseEntity<String> actualizarPaciente(@RequestBody Paciente paciente){
 
-        Paciente pacienteBuscado= pacienteService.buscarPorID(paciente.getId());
-        if(pacienteBuscado!=null){
+        Optional<Paciente> pacienteBuscado= pacienteService.buscarPorID(paciente.getId());
+        if(pacienteBuscado.isPresent()){
             pacienteService.actualizarPaciente(paciente);
-            return "paciente actualizado con exito";
+            return ResponseEntity.ok("paciente actualizado con exito");
         }else{
-            return "paciente no encontrado";
+            return ResponseEntity.badRequest().build();
         }
 
     }
 
     @DeleteMapping("/{id}")
-    public Boolean eliminarPaciente(@PathVariable("id") Integer id){
-        Paciente pacienteBuscado = pacienteService.buscarPorID(id);
-        if(pacienteBuscado!=null){
+    public ResponseEntity<String> eliminarPaciente(@PathVariable("id") Long id){
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorID(id);
+        if(pacienteBuscado.isPresent()){
             pacienteService.eliminarPaciente(id);
-            return true;
+            return ResponseEntity.ok("paciente eliminado con exito");
+        }else{
+            return ResponseEntity.badRequest().build();
         }
-        return false;
     }
 
-    @GetMapping
-    public List<Paciente> buscarTodosLosPacientes(){
-        return pacienteService.buscarTodosLosPacientes();
+    @GetMapping("/buscar/{email}")
+    public ResponseEntity<Optional<Paciente>> buscarPorEmail(@PathVariable String email){
+        Optional<Paciente> pacienteBuscado= pacienteService.buscarPorEmail(email);
+        if(pacienteBuscado.isPresent()){
+            return ResponseEntity.ok(pacienteBuscado);
+        }else{
+            return  ResponseEntity.notFound().build();
+        }
     }
 
 

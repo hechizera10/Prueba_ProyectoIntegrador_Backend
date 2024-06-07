@@ -1,41 +1,38 @@
 package BackEndC3.ClinicaOdontologica.service;
 
-import BackEndC3.ClinicaOdontologica.dao.OdontologoDAOH2;
-import BackEndC3.ClinicaOdontologica.dao.OdontologoDAOList;
-import BackEndC3.ClinicaOdontologica.dao.PacienteDAOH2;
-import BackEndC3.ClinicaOdontologica.dao.iDao;
-import BackEndC3.ClinicaOdontologica.model.Odontologo;
-import BackEndC3.ClinicaOdontologica.model.Paciente;
+import BackEndC3.ClinicaOdontologica.entity.Odontologo;
+import BackEndC3.ClinicaOdontologica.repository.OdontologoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class OdontologoService {
-    private iDao<Odontologo> odontologoiDao;
-    private iDao<Odontologo> odontologoiDaoList;
 
-    public OdontologoService() {
-        odontologoiDao= new OdontologoDAOH2();
-        odontologoiDaoList = new OdontologoDAOList();
-    }
+    @Autowired
+    private OdontologoRepository odontologoRepository;
+
     //metodos manuales
     public Odontologo guardarOdontologo(Odontologo odontologo){
-        return odontologoiDao.guardar(odontologo);
+        return odontologoRepository.save(odontologo);
     }
 
     public List<Odontologo> buscarTodos(){
-        return odontologoiDao.buscarTodos();
+        return odontologoRepository.findAll();
     }
 
-    public Odontologo buscarOdontologoPorId(Integer id){
-        return odontologoiDao.buscarPorId(id);
+    public Optional<Odontologo> buscarOdontologoPorId(Long id){
+        return odontologoRepository.findById(id);
     }
 
-    public Boolean eliminarOdontologo(Integer id){
-        return odontologoiDao.eliminar(id);
+    public void eliminarOdontologo(Long id){
+        odontologoRepository.deleteById(id);
     }
 
     public void actualizarOdontologo(Odontologo odontologo){
-        odontologoiDao.actualizar(odontologo);
+        odontologoRepository.save(odontologo);
     }
 
     //public Odontologo guardarOdontologoEnLista(Odontologo odontologo){

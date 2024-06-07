@@ -1,35 +1,37 @@
 package BackEndC3.ClinicaOdontologica.service;
 
-import BackEndC3.ClinicaOdontologica.dao.PacienteDAOH2;
-import BackEndC3.ClinicaOdontologica.dao.iDao;
-import BackEndC3.ClinicaOdontologica.model.Paciente;
+import BackEndC3.ClinicaOdontologica.entity.Paciente;
+import BackEndC3.ClinicaOdontologica.repository.PacienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Service
 public class PacienteService {
-private iDao<Paciente> pacienteiDao;
 
-    public PacienteService() {
-        pacienteiDao= new PacienteDAOH2();
-    }
+    @Autowired
+    private PacienteRepository pacienteRepository;
+
     //metodos manuales
     public Paciente guardarPaciente(Paciente paciente){
-        return pacienteiDao.guardar(paciente);
+        return pacienteRepository.save(paciente);
     }
-    public Paciente buscarPorID(Integer id){
-        return pacienteiDao.buscarPorId(id);
+    public Optional<Paciente> buscarPorID(Long id){
+        return pacienteRepository.findById(id);
     }
-    public List<Paciente> buscarTodosLosPacientes(){return pacienteiDao.buscarTodos();}
-    public Paciente buscarPorEmail(String email){
-        return pacienteiDao.buscarPorString(email);
+    public List<Paciente> buscarTodosLosPacientes(){return pacienteRepository.findAll();}
+    public Optional<Paciente> buscarPorEmail(String email){
+        return pacienteRepository.findByEmail(email);
     }
 
     public void actualizarPaciente(Paciente paciente){
-        pacienteiDao.actualizar(paciente);
+        pacienteRepository.save(paciente);
     }
 
-    public Boolean eliminarPaciente(Integer id){
-        return pacienteiDao.eliminar(id);
+    public void eliminarPaciente(Long id){
+        pacienteRepository.deleteById(id);
     }
 
 }
