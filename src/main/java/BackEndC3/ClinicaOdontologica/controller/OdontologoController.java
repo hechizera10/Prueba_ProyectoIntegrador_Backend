@@ -22,13 +22,17 @@ public class OdontologoController {
 
     //ahora vienen todos los metodos que nos permitan actuar como intermediarios.
 
-    @GetMapping("/{id}") //--> nos permite buscar un odontologo por id
-    public ResponseEntity<Optional<Odontologo>> buscarOdontologoPorId(@PathVariable Long id){
-        if (odontologoService.buscarOdontologoPorId(id).isPresent()){
-            return ResponseEntity.ok(odontologoService.buscarOdontologoPorId(id));
+    @GetMapping("/{id}")
+    public ResponseEntity<Odontologo> buscarOdontologoPorId(@PathVariable Long id){
+        Optional<Odontologo> odontologoOptional = odontologoService.buscarOdontologoPorId(id);
+        if (odontologoOptional.isPresent()) {
+            Odontologo odontologo = odontologoOptional.get();
+            odontologo.getPacientes().size();
+            return ResponseEntity.ok(odontologo);
         }
         return ResponseEntity.badRequest().build();
     }
+
 
     @PostMapping
     public ResponseEntity<Odontologo> guardarOdontologo(@RequestBody Odontologo odontologo){

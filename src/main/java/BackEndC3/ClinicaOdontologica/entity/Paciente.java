@@ -2,6 +2,7 @@ package BackEndC3.ClinicaOdontologica.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 
@@ -16,6 +17,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "pacientes")
+
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,6 +44,7 @@ public class Paciente {
 
     @ManyToOne
     @JoinColumn(name = "odontologo_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("pacientes")
     private Odontologo odontologo;
 
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

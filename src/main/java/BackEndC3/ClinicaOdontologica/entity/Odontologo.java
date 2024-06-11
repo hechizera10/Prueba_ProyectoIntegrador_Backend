@@ -1,6 +1,7 @@
 package BackEndC3.ClinicaOdontologica.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,7 +29,7 @@ public class Odontologo {
     private String apellido;
 
     @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
+    @JsonIgnoreProperties("odontologo")
     private Set<Paciente> pacientes = new HashSet<>();
 
     @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
