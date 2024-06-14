@@ -47,11 +47,7 @@ public class Paciente {
     @JsonIgnoreProperties("pacientes")
     private Odontologo odontologo;
 
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Set<Turno> turnos = new HashSet<>();
-
-    public Paciente(Long id, String nombre, String apellido, String cedula, LocalDate fechaIngreso, Domicilio domicilio, String email, Odontologo odontologo, Set<Turno> turnos) {
+    public Paciente(Long id, String nombre, String apellido, String cedula, LocalDate fechaIngreso, Domicilio domicilio, String email, Odontologo odontologo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -60,7 +56,6 @@ public class Paciente {
         this.domicilio = domicilio;
         this.email = email;
         this.odontologo = odontologo;
-        this.turnos = turnos;
     }
 
     public Paciente() {

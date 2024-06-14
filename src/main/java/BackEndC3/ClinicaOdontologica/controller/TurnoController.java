@@ -3,6 +3,8 @@ package BackEndC3.ClinicaOdontologica.controller;
 import BackEndC3.ClinicaOdontologica.entity.Odontologo;
 import BackEndC3.ClinicaOdontologica.entity.Paciente;
 import BackEndC3.ClinicaOdontologica.entity.Turno;
+import BackEndC3.ClinicaOdontologica.exception.BadRequestException;
+import BackEndC3.ClinicaOdontologica.exception.ResourceNotFoundException;
 import BackEndC3.ClinicaOdontologica.service.OdontologoService;
 import BackEndC3.ClinicaOdontologica.service.PacienteService;
 import BackEndC3.ClinicaOdontologica.service.TurnoService;
@@ -25,13 +27,18 @@ public class TurnoController {
     private OdontologoService odontologoService;
 
     @PostMapping
-    public ResponseEntity<Turno> guardarTurno(@RequestBody Turno turno){
+    public ResponseEntity<Turno> guardarTurno(@RequestBody Turno turno) throws BadRequestException {
         Optional<Paciente> pacienteBuscado= pacienteService.buscarPorID(turno.getPaciente().getId());
         Optional<Odontologo> odontologoBuscado= odontologoService.buscarOdontologoPorId(turno.getOdontologo().getId());
+
         if(pacienteBuscado.isPresent()&&odontologoBuscado.isPresent()){
+            turno.setPaciente(pacienteBuscado.get());
+            turno.setOdontologo(odontologoBuscado.get());
             return ResponseEntity.ok(turnoService.guardarTurno(turno));
-        }else{
-            return ResponseEntity.badRequest().build();
+        } else if (pacienteBuscado.isEmpty()){
+            throw new BadRequestException("Paciente no existe");
+        } else {
+            throw new BadRequestException("Odontologo no existe");
         }
 
     }
@@ -52,13 +59,13 @@ public class TurnoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarTurno(@PathVariable Long id){
+    public ResponseEntity<String> eliminarTurno(@PathVariable Long id) throws ResourceNotFoundException{
         Optional<Turno> turnoBuscado= turnoService.buscarPorId(id);
         if(turnoBuscado.isPresent()){
             turnoService.eliminarTurno(id);
             return ResponseEntity.ok("Turno eliminado");
         }else{
-            return ResponseEntity.badRequest().build();
+            throw new ResourceNotFoundException("Turno no encontrado");
         }
     }
 
