@@ -28,17 +28,12 @@ public class Odontologo {
     @Column
     private String apellido;
 
-    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("odontologo")
-    private Set<Paciente> pacientes = new HashSet<>();
 
-
-    public Odontologo(Long id, Integer matricula, String nombre, String apellido, Set<Paciente> pacientes) {
+    public Odontologo(Long id, Integer matricula, String nombre, String apellido) {
         this.id = id;
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.pacientes = pacientes;
     }
 
     public Odontologo() {

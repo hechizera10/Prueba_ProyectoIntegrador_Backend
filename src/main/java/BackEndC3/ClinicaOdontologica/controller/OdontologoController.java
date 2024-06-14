@@ -28,7 +28,6 @@ public class OdontologoController {
         Optional<Odontologo> odontologoOptional = odontologoService.buscarOdontologoPorId(id);
         if (odontologoOptional.isPresent()) {
             Odontologo odontologo = odontologoOptional.get();
-            odontologo.getPacientes().size();
             return ResponseEntity.ok(odontologo);
         }
         return ResponseEntity.badRequest().build();

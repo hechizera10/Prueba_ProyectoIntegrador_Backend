@@ -18,8 +18,6 @@ import java.util.Optional;
 public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
-    @Autowired
-    private OdontologoService odontologoService;
 
     @GetMapping("/{id}") //--> nos permite buscar un paciente por id
     public ResponseEntity<Optional<Paciente>> buscarPacientePorId(@PathVariable Long id){
@@ -33,14 +31,9 @@ public class PacienteController {
 
     @PostMapping //--> nos permite persistir los datos que vienen desde la vista
     public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente){
-        Optional<Odontologo> odontologoBuscado = odontologoService.buscarOdontologoPorId(paciente.getOdontologo().getId());
-
-        if (odontologoBuscado.isPresent()) {
-            paciente.setOdontologo(odontologoBuscado.get());
-            return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
-        }
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
+
     @PutMapping
     public ResponseEntity<String> actualizarPaciente(@RequestBody Paciente paciente){
 

@@ -42,12 +42,8 @@ public class Paciente {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @ManyToOne
-    @JoinColumn(name = "odontologo_id", referencedColumnName = "id")
-    @JsonIgnoreProperties("pacientes")
-    private Odontologo odontologo;
 
-    public Paciente(Long id, String nombre, String apellido, String cedula, LocalDate fechaIngreso, Domicilio domicilio, String email, Odontologo odontologo) {
+    public Paciente(Long id, String nombre, String apellido, String cedula, LocalDate fechaIngreso, Domicilio domicilio, String email) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -55,7 +51,6 @@ public class Paciente {
         this.fechaIngreso = fechaIngreso;
         this.domicilio = domicilio;
         this.email = email;
-        this.odontologo = odontologo;
     }
 
     public Paciente() {
@@ -71,7 +66,6 @@ public class Paciente {
                 ", fechaIngreso=" + fechaIngreso +
                 ", domicilio=" + domicilio +
                 ", email='" + email + '\'' +
-                ", odontologo=" + odontologo +
                 '}';
     }
 }
