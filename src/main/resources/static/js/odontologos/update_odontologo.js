@@ -36,7 +36,7 @@ window.addEventListener('load', function () {
 })
 
     //Es la funcion que se invoca cuando se hace click sobre el id de un odontologo del listado
-    //se encarga de llenar el formulario con los datos de la pelicula
+    //se encarga de llenar el formulario con los datos de la odontologo
     //que se desea modificar
     function findBy(id) {
           const url = '/odontologos'+"/"+id;

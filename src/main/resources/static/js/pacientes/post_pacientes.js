@@ -62,9 +62,15 @@ window.addEventListener('load', function () {
 
 
     function resetUploadForm(){
-        document.querySelector('#titulo').value = "";
-        document.querySelector('#categoria').value = "";
-         document.querySelector('#premios').value = "";
+        document.querySelector('#nombre').value = "";
+        apellido: document.querySelector('#apellido').value = "";
+        cedula: document.querySelector('#cedula').value = "";
+        fechaIngreso: document.querySelector('#fechaIngreso').value = "";
+        calle:document.querySelector('#calle').value = "";
+        numero: document.querySelector('#numero').value = "";
+        localidad: document.querySelector('#localidad').value = "";
+        provincia: document.querySelector('#provincia').value = "";
+        email: document.querySelector('#email').value = "";
 
     }
 
